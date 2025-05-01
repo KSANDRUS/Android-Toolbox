@@ -199,7 +199,7 @@ class _MyAppState extends State<MyApp> {
               labelLarge: GoogleFonts.quicksand(),
             ),
             radioTheme: RadioThemeData(
-              fillColor: MaterialStateProperty.resolveWith((states) => Colors.blueGrey),
+              fillColor: MaterialStateProperty.all(Colors.blueGrey),
             ),
             buttonTheme: const ButtonThemeData(
                 buttonColor: Colors.black
