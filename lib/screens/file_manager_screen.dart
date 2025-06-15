@@ -353,7 +353,7 @@ class _FileManagerScreenState extends State<FileManagerScreen> with SingleTicker
                                     MainAxisAlignment.spaceBetween,
                                     children: [
                                       Icon(
-                                        FontAwesomeIcons.fileArrowUp,
+                                        FontAwesomeIcons.fileUpload,
                                         color: SystemTheme.accentColor.accent,
                                       ),
                                       Text(
@@ -718,7 +718,7 @@ class _FileManagerScreenState extends State<FileManagerScreen> with SingleTicker
                                             PopupMenuItem(
                                               child: ListTile(
                                                   leading: Icon(
-                                                    FontAwesomeIcons.scissors,
+                                                    FontAwesomeIcons.cut,
                                                     color: Theme.of(context).brightness==Brightness.light?SystemTheme.accentColor.accent:null,
                                                   ),
                                                   dense:false,
@@ -899,13 +899,12 @@ class ClipboardChip extends StatelessWidget {
   final Function transferFile;
   final BuildContext parentContext;
   const ClipboardChip(
-      {Key? key,
+      {super.key,
       required this.itemName,
       required this.jobIndex,
       required this.fileTransferType,
       required this.transferFile,
-      required this.parentContext})
-      : super(key: key);
+      required this.parentContext});
 
   @override
   Widget build(BuildContext context) {
@@ -924,8 +923,8 @@ class ClipboardChip extends StatelessWidget {
           },
           deleteButtonTooltipMessage: "Paste here",
           deleteIcon: Icon(
+            fileTransferType == FileTransferType.move ? FontAwesomeIcons.cut : FontAwesomeIcons.copy,
             size: 18,
-            fileTransferType == FileTransferType.move ? FontAwesomeIcons.scissors : FontAwesomeIcons.copy,
             color: clipboardChipColors[colorIndex],
           ),
           materialTapTargetSize: MaterialTapTargetSize.padded,
@@ -945,7 +944,7 @@ class ClipboardChip extends StatelessWidget {
 class FutureIcon extends StatelessWidget {
 
   final Future<IconData> iconData;
-  const FutureIcon({Key? key,required this.iconData}) : super(key: key);
+  const FutureIcon({super.key,required this.iconData});
 
   @override
   Widget build(BuildContext context) {
