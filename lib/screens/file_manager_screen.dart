@@ -348,7 +348,7 @@ class _FileManagerScreenState extends State<FileManagerScreen> with SingleTicker
                               ),
                               itemBuilder: (context) => [
                                 PopupMenuItem(
-                                  child: const Row(
+                                  child: Row(
                                     mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                     children: [

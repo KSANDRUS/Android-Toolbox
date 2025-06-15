@@ -143,7 +143,7 @@ class _MyAppState extends State<MyApp> {
               labelLarge: GoogleFonts.quicksand(),
               bodySmall: GoogleFonts.quicksand(),
             ),
-            dialogTheme: DialogTheme(
+            dialogTheme: DialogThemeData(
               titleTextStyle: GoogleFonts.quicksand(
                 fontSize: 20,
                 color: accentColor,
@@ -156,7 +156,7 @@ class _MyAppState extends State<MyApp> {
             scaffoldBackgroundColor: Platform.isLinux?Colors.black:Colors.transparent,
             primaryColor: Colors.blueGrey,
             // cardColor: Colors.transparent,
-            cardTheme: const CardTheme(
+            cardTheme: const CardThemeData(
               shadowColor: Colors.transparent,
               color: Colors.transparent,
             ),
