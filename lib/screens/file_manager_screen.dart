@@ -899,13 +899,12 @@ class ClipboardChip extends StatelessWidget {
   final Function transferFile;
   final BuildContext parentContext;
   const ClipboardChip(
-      {Key? key,
+      {super.key,
       required this.itemName,
       required this.jobIndex,
       required this.fileTransferType,
       required this.transferFile,
-      required this.parentContext})
-      : super(key: key);
+      required this.parentContext});
 
   @override
   Widget build(BuildContext context) {
@@ -945,7 +944,7 @@ class ClipboardChip extends StatelessWidget {
 class FutureIcon extends StatelessWidget {
 
   final Future<IconData> iconData;
-  const FutureIcon({Key? key,required this.iconData}) : super(key: key);
+  const FutureIcon({super.key,required this.iconData});
 
   @override
   Widget build(BuildContext context) {

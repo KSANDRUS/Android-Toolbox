@@ -14,7 +14,6 @@ Future<FileContentTypes> getFileType({required Device device,required String cur
   bool isLegacyAndroidFile=false;
   if(isPreMarshmallowAndroid(device.androidAPILevel)){
     ProcessResult result=await Process.run(adbExecutable,["-s",device.id,"shell","ls","\"${currentPath+fileName}\""]);
-    // print(result.stdout.toString().trim().contains(_currentPath+fileName));
     if(result.stdout.toString().trim().contains(currentPath+fileName)){
       isLegacyAndroidFile=true;
     }
@@ -77,9 +76,9 @@ Future<FileContentTypes> findFileItemType(ADBService adbService, String currentP
 }
 
 
-Future<String?> pickFileFolderFromDesktop({required FileItemType fileItemType, required String dialogTitle, List<String> allowedExtensions=const []}) async{
+Future<String?> pickFileFolderFromDesktop({required FileItemType fileItemType, required String dialogTitle, List<String>? allowedExtensions}) async{
   if (fileItemType == FileItemType.file) {
-    FilePickerResult? filePicker = await FilePicker.platform.pickFiles(dialogTitle: dialogTitle, type: allowedExtensions[0]=="*"?FileType.any:FileType.custom, allowedExtensions: allowedExtensions);
+    FilePickerResult? filePicker = await FilePicker.platform.pickFiles(dialogTitle: dialogTitle, type: allowedExtensions == null?FileType.any:FileType.custom, allowedExtensions: allowedExtensions);
     return filePicker?.files.single.path;
   } else {
     return await FilePicker.platform.getDirectoryPath(dialogTitle: dialogTitle,lockParentWindow: true);
@@ -155,7 +154,7 @@ Future<IconData> getFileIconByType(Future<FileContentTypes> fileType) async {
     case FileContentTypes.video: return FontAwesomeIcons.fileVideo;
     case FileContentTypes.audio: return FontAwesomeIcons.fileAudio;
     case FileContentTypes.apk: return FontAwesomeIcons.android;
-    case FileContentTypes.archive: return FontAwesomeIcons.fileArchive;
+    case FileContentTypes.archive: return FontAwesomeIcons.fileZipper;
     case FileContentTypes.torrent: return FontAwesomeIcons.magnet;
     case FileContentTypes.securityCertificate: return FontAwesomeIcons.key;
     case FileContentTypes.file: return FontAwesomeIcons.file;
